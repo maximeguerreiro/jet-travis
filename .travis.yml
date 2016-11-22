@@ -1,0 +1,33 @@
+sudo: false
+language: java
+jdk:
+- oraclejdk8
+addons:
+  apt:
+    packages:
+    - libc6:i686
+    - libx11-6:i686
+    - libxext6:i686
+    - libxrender1:i686
+    - libxi6:i386
+    - libxtst6:i686
+env:
+- secure: IpOqheeld1yLyDBOrvVtILj7pVqcKU5+XDzKQrH4W3H+A3jH48LySf2MrIo8MXEUeGmAqaP9jsaz98JDykulwhRy137Hu+oEmDCWzdJFjJ/Ih+UUhlFoOKyVrgZmdAejd1LUWTDSwFDtZrLzY8r765xW/HFr/871eOdJ7i6w9TFvq70NFmJq6gIUi1A/EJHlqFFND2l0LihbOxzNdG4xodBQrHGIPYRJZeIEUuyRx2hcQQNaH9gDGBS+xX++sfKjNDqDBERZDlgCBwfBiQYqSHJR3mbTZocAMXfL6E+7Wkd2qs2kCU4SJrpEmRthLWUUECmgQD+LJyg8JpJHpAfctToqvWMbm4SmlRm6Z9d/h4pbXkYXqsj4Jy+NpFJAFHMseaytPgd+9fowmOAj0q6YtAIiqZt2zIcKW3yvskcy3CaZWk+4jxKg6rMC/6JFCbaNUehbuaMFC4FxhWgEXzpieoQcP4892JpIBVFlz3lOFlaGbtzYgbNi35M+WXpQ9I+//YL6Ew+DzSQvWwuADxatlt7OjD4cOKXvCvDe2g/oOPUkb2YWc1tydFjGmi6fFxFU9Vv8fCOAjutatRJpPobavr6LmrS5+t1Is7p3ulDhYgWGATJJjAYOkqSJeLl27hGJpAzaAo9qDaDFLnzcvh4KL9nRepFKwDIExopzaZpbzDo=
+
+before_script:
+- wget -q --no-check-certificate -O jet-1130-eval-en-linux-amd64.bin "${jet_url}"
+- chmod +x ./jet-1130-eval-en-linux-amd64.bin
+- yes | ./jet-1130-eval-en-linux-amd64.bin -batch
+
+script:
+- source ./jet11.3-eval-amd64/setenv
+- JET_HOME=`pwd`/jet11.3-eval-amd64/ mvn package jet:build
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: KuvALoeGJZGQenl8FDzJQGMCeN5xwEFMqW2aukjH4FerlRAUAdJL2kOCYMleh4M4q66d8K7OJiNvZcXQ4rEbWxOH4PYpau1vQrUiqCqdCw593sVAxZI/Qh8F6JqEr8cMTuVo8JIpSYrAbi7MUcWac4NyhA1k00ewpfHnC0bY/Wxi+XmTyJ/H5g/UhhvcVpjcGIHMNILAwvhaVyp5gjkl5i3egzhxhWGd0KxJnv3uB4J42SJFB/71JHMXyzgqddJyQx1Ij7ofNCms4bAU0/r1yhJF4h9FPWdH1tcfloNZ1GAZoSwZERbjlvJCGVvTar7INK7gxRBCYom2rXjT63+WN3w1Y+Lhblb/VjtZ4galRqf7RFxBSUuoQTs2lAhY4OR5IPk6fa7/6o/yLN2P8u3by4fbkCi81JvZvyNNjG7JpLGn6ExShIu7zL9Qtkb+2yKsQvQqWW6JNVXZ0FBvJjFaIgc6FyOoipWfkxNAhofKDwxBM1vMXyf0UJM/RPjLbMFfepcHFV8Mmc9rjBJlltGWSJ4ohkPyvvX0qyleVFZNEJ90ZUug2dsTP1edM1b0qXH0QRGVcyucMBIIIZeB32sNnN+Mc+A3+sA9hEyTeTHvDJIY8098Vj9FhuhVaBMByWSk8KeNd8RuP39vrahnWkBgjBnuat1BUSdvaJEWrp0bV7E=
+  file: target/jet/jet-demo.zip
+  on:
+    repo: maximeguerreiro/jet-travis

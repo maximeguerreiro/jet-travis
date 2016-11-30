@@ -17,11 +17,9 @@ env:
 before_script:
 - wget -q --no-check-certificate -O jet-1130-eval-en-linux-amd64.bin "${jet_url}"
 - chmod +x ./jet-1130-eval-en-linux-amd64.bin
-- yes | ./jet-1130-eval-en-linux-amd64.bin -batch
+- ./jet-1130-eval-en-linux-amd64.bin -batch -no-aftrun
 
-script:
-- source ./jet11.3-eval-amd64/setenv
-- JET_HOME=`pwd`/jet11.3-eval-amd64/ mvn package jet:build
+script: mvn "-Djet.home=`pwd`/jet11.3-eval-amd64/" package jet:build
 
 deploy:
   provider: releases

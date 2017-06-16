@@ -21,7 +21,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <mainClass>fr.mguerreiro.jetdemo.Main</mainClass>
     </properties>
-         
+
     <build>
         <finalName>jet-demo</finalName>
 

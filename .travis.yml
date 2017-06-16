@@ -5,12 +5,12 @@ jdk:
 addons:
   apt:
     packages:
-    - libc6:i686
-    - libx11-6:i686
-    - libxext6:i686
-    - libxrender1:i686
+    - libc6:i386
+    - libx11-6:i386
+    - libxext6:i386
+    - libxrender1:i386
     - libxi6:i386
-    - libxtst6:i686
+    - libxtst6:i386
 env:
 - secure: IpOqheeld1yLyDBOrvVtILj7pVqcKU5+XDzKQrH4W3H+A3jH48LySf2MrIo8MXEUeGmAqaP9jsaz98JDykulwhRy137Hu+oEmDCWzdJFjJ/Ih+UUhlFoOKyVrgZmdAejd1LUWTDSwFDtZrLzY8r765xW/HFr/871eOdJ7i6w9TFvq70NFmJq6gIUi1A/EJHlqFFND2l0LihbOxzNdG4xodBQrHGIPYRJZeIEUuyRx2hcQQNaH9gDGBS+xX++sfKjNDqDBERZDlgCBwfBiQYqSHJR3mbTZocAMXfL6E+7Wkd2qs2kCU4SJrpEmRthLWUUECmgQD+LJyg8JpJHpAfctToqvWMbm4SmlRm6Z9d/h4pbXkYXqsj4Jy+NpFJAFHMseaytPgd+9fowmOAj0q6YtAIiqZt2zIcKW3yvskcy3CaZWk+4jxKg6rMC/6JFCbaNUehbuaMFC4FxhWgEXzpieoQcP4892JpIBVFlz3lOFlaGbtzYgbNi35M+WXpQ9I+//YL6Ew+DzSQvWwuADxatlt7OjD4cOKXvCvDe2g/oOPUkb2YWc1tydFjGmi6fFxFU9Vv8fCOAjutatRJpPobavr6LmrS5+t1Is7p3ulDhYgWGATJJjAYOkqSJeLl27hGJpAzaAo9qDaDFLnzcvh4KL9nRepFKwDIExopzaZpbzDo=
 
